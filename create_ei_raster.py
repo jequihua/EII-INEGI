@@ -11,8 +11,8 @@ def scale(m,minv,maxv,minlim,maxlim, decimals=2):
     scaled = np.around(scaled, decimals=decimals)
     return scaled
 
-PATHDVP = './IEE/1delt_vp.tif'
-PATHEI = './IEexp/IE_expectedVal_INEGI_2023.csv'
+PATHDVP = '../RASTER/raster_entrega//1delt_vp.tif'
+PATHEI = '../expectedVal_INEGI_2023.csv'
 
 if __name__ == '__main__':
 
@@ -31,7 +31,7 @@ if __name__ == '__main__':
     ei_data = np.genfromtxt(PATHEI, delimiter=',', skip_header=1)
     ei_data = scale(ei_data,18,0,0,1)
 
-    new_dataset = rio.open('./IEexp/IE_expectedVal_INEGI_2023.tif', 'w', driver='GTiff',
+    new_dataset = rio.open('../RASTER/IEexp/IE_expectedVal_INEGI_2023.tif', 'w', driver='GTiff',
                                 height=height, width=width,
                                 count=1, dtype=str(vec.dtype),
                                 crs=crs,
